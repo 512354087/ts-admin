@@ -1,20 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {AppModule} from '@/store/modules/app';
-
+import App, { IAppState } from '@/store/modules/app';
+import Setting, { ISettingsState} from '@/store/modules/setting';
 
 Vue.use(Vuex);
 
 export interface IRootState {
-    app: IAppState;
+    App: IAppState;
+    Setting: ISettingsState;
 
 }
 
 
 export default new Vuex.Store({
     modules: {
-        AppModule,
-
+        App,
+        Setting,
     },
     state: {
 

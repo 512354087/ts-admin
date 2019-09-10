@@ -8,6 +8,9 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-  ],
+  routes: [{
+    path: '/login',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/Login.vue'),
+    meta: { hidden: true },
+  }],
 });

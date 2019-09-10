@@ -7,7 +7,7 @@
         <!-- <navbar />
         <tags-view v-if="showTagsView" /> -->
       </div>
-      <!-- <app-main /> -->
+      <app-main />
       <!-- <right-panel v-if="showSettings">
         <settings />
       </right-panel> -->
@@ -15,33 +15,34 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
+import {DeviceType} from '@/store/modules/app';
 @Component({
-  name: "Layout",
+  name: 'Layout',
   components: {
-  }
+      appMain
+  },
 })
 export default class extends Vue {
   get classObj() {
     return {
-      hideSidebar: !this.sidebar.opened,
-      openSidebar: this.sidebar.opened,
-      withoutAnimation: this.sidebar.withoutAnimation,
-      mobile: this.device === DeviceType.Mobile
-    }
+      hideSidebar: !this.$store.state.app.sidebar.opened,
+      openSidebar: this.$store.state.app.sidebar.opened,
+      withoutAnimation: this.$store.state.app.sidebar.withoutAnimation,
+      mobile: this.$store.state.app.device === DeviceType.Mobile,
+    };
   }
-
-
+  // 这里get 相当于原生的计算属性
   get showSettings() {
-    return SettingsModule.showSettings
+    return this.$store.state.Settings.showSettings;
   }
 
   get showTagsView() {
-    return SettingsModule.showTagsView
+    return this.$store.state.Settings.showTagsView;
   }
 
   get fixedHeader() {
-    return SettingsModule.fixedHeader
+    return this.$store.state.Settings.fixedHeader;
   }
 }
 </script>
