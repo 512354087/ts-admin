@@ -10,8 +10,8 @@ export enum DeviceType {
 export interface IAppState {
     device: DeviceType;
     sidebar: {
-        opened: boolean,
-        withoutAnimation: boolean,
+        opened: boolean;
+        withoutAnimation: boolean;
     };
     language: string;
     size: string;

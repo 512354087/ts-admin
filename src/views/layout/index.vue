@@ -17,10 +17,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import {DeviceType} from '@/store/modules/app';
+import appMain from './components/AppMain.vue';
 @Component({
   name: 'Layout',
   components: {
-      appMain
+      appMain,
   },
 })
 export default class extends Vue {
